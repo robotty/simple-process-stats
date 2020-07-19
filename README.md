@@ -1,6 +1,6 @@
 # simple-process-stats
 
-A small library to get memory usage and elapsed CPU time.
+A small Rust library to get memory usage and elapsed CPU time.
 
 * Supports Windows and Linux.
 * Async interface, uses `tokio::fs` for file operations
