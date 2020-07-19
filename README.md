@@ -8,7 +8,7 @@ A small Rust library to get memory usage and elapsed CPU time.
 ```rust
 use simple_process_stats::ProcessStats;
 
-let process_stats = ProcessStats::get().expect("could not get stats for running process");
+let process_stats = ProcessStats::get().await.expect("could not get stats for running process");
 println!("{:?}", process_stats);
 // ProcessStats {
 //     cpu_time_user: 421.875ms,

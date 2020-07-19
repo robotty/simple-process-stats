@@ -3,7 +3,7 @@
 //! * Supports Windows and Linux.
 //! * Async interface, uses `tokio::fs` for file operations
 //!
-//! ```
+//! ```rust
 //! use simple_process_stats::ProcessStats;
 //!
 //! # #[tokio::main]
