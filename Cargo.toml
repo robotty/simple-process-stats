@@ -1,6 +1,9 @@
 [package]
 name = "simple-process-stats"
+description = "Get memory usage and CPU time on Linux and Windows"
+license = "MIT"
 version = "0.1.0"
+repository = "https://github.com/robotty/simple-process-stats"
 authors = ["Ruben Anders <ruben.anders@robotty.de>"]
 edition = "2018"
 
