@@ -6,13 +6,16 @@
 //! ```
 //! use simple_process_stats::ProcessStats;
 //!
-//! let process_stats = ProcessStats::get().expect("could not get stats for running process");
+//! # #[tokio::main]
+//! # async fn main() {
+//! let process_stats = ProcessStats::get().await.expect("could not get stats for running process");
 //! println!("{:?}", process_stats);
 //! // ProcessStats {
 //! //     cpu_time_user: 421.875ms,
 //! //     cpu_time_kernel: 102.332ms,
 //! //     memory_usage_bytes: 3420160,
 //! // }
+//! # }
 //! ```
 //!
 //! On Linux, this library reads `/proc/self/stat` and uses the `sysconf` libc function.
@@ -54,7 +57,7 @@ impl ProcessStats {
 }
 
 /// An error that occurred while trying to get the process stats.
-#[derive(Error, Debug, Clone, PartialEq, Eq)]
+#[derive(Error, Debug)]
 pub enum Error {
     /// A file's contents could not be read successfully. The file that could not be read is specified by
     /// the `PathBuf` parameter.
