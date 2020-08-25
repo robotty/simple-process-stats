@@ -1,5 +1,5 @@
 use crate::{Error, ProcessStats};
-use winapi::_core::time::Duration;
+use std::time::Duration;
 
 pub fn get_info() -> Result<ProcessStats, Error> {
     let pid = unsafe { libc::getpid() };
