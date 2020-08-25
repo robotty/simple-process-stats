@@ -14,8 +14,7 @@ pub fn get_info() -> Result<ProcessStats, Error> {
 
 #[cfg(test)]
 pub mod tests {
-    use crate::linux;
-    use tokio::runtime::Runtime;
+    use crate::macos;
 
     #[test]
     pub fn test_no_error() {
