@@ -1,3 +1,6 @@
+#![deny(clippy::all)]
+#![deny(clippy::cargo)]
+
 //! A small library to get memory usage and elapsed CPU time.
 //!
 //! * Supports Windows and Linux.
