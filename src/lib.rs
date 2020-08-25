@@ -26,6 +26,8 @@
 mod linux;
 #[cfg(target_os = "windows")]
 mod windows;
+#[cfg(target_os = "macos")]
+mod macos;
 
 use std::path::PathBuf;
 use std::time::Duration;
@@ -53,6 +55,12 @@ impl ProcessStats {
     #[cfg(target_os = "linux")]
     pub async fn get() -> Result<ProcessStats, Error> {
         linux::get_info().await
+    }
+
+    /// Get the statistics using the OS-specific method.
+    #[cfg(target_os = "macos")]
+    pub async fn get() -> Result<ProcessStats, Error> {
+        macos::get_info()
     }
 }
 
