@@ -3,7 +3,7 @@
 
 //! A small library to get memory usage and elapsed CPU time.
 //!
-//! * Supports Windows and Linux.
+//! * Supports Windows, Linux and macOS.
 //! * Async interface, uses `tokio::fs` for file operations
 //!
 //! ```rust
@@ -24,6 +24,8 @@
 //! On Linux, this library reads `/proc/self/stat` and uses the `sysconf` libc function.
 //!
 //! On Windows, the library uses `GetCurrentProcess` combined with `GetProcessTimes` and `K32GetProcessMemoryInfo`.
+//!
+//! On macOS, this library uses `proc_pidinfo` from `libproc` (and current process ID is determined via `libc`).
 
 #[cfg(target_os = "linux")]
 mod linux;
