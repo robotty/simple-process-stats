@@ -33,4 +33,5 @@ jobs:
       - uses: hecrj/setup-rust-action@v1
         with:
           rust-version: stable
+          components: rustfmt
       - run: cargo fmt -- --check
