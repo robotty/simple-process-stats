@@ -21,6 +21,7 @@ jobs:
       - uses: hecrj/setup-rust-action@v1
         with:
           rust-version: ${{ matrix.rust }}
+          components: clippy, rustfmt
       - run: cargo build --verbose
       - name: Run tests
         run: cargo test --verbose -- --nocapture
