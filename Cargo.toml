@@ -28,4 +28,4 @@ darwin-libproc = "0.2.0"
 libc = "0.2.72"
 
 [dev-dependencies]
-tokio = { version = "0.3.0", features = ["rt-core", "macros"] }
+tokio = { version = "0.3.0", features = ["rt", "macros"] }
