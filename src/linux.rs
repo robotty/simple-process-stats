@@ -33,7 +33,7 @@ pub mod tests {
     use crate::linux;
 
     #[tokio::test]
-    pub fn test_no_error() {
+    pub async fn test_no_error() {
         #[no_mangle]
         fn spin_for_a_bit() {
             let mut _a = 0;
