@@ -31,10 +31,9 @@ pub async fn get_info() -> Result<ProcessStats, Error> {
 #[cfg(test)]
 pub mod tests {
     use crate::linux;
-    use tokio::runtime::Runtime;
 
-    #[test]
-    pub fn test_no_error() {
+    #[tokio::test]
+    pub async fn test_no_error() {
         #[no_mangle]
         fn spin_for_a_bit() {
             let mut _a = 0;
@@ -46,8 +45,6 @@ pub mod tests {
         // to get some nonzero number for cpu_time_user
         spin_for_a_bit();
 
-        Runtime::new().unwrap().block_on(async move {
-            dbg!(linux::get_info().await.unwrap());
-        });
+        dbg!(linux::get_info().await.unwrap());
     }
 }
