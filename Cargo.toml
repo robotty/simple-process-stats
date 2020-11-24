@@ -2,7 +2,7 @@
 name = "simple-process-stats"
 description = "Get memory usage and CPU time on Linux and Windows"
 license = "MIT"
-version = "0.2.0"
+version = "0.2.1"
 keywords = ["process", "cpu", "memory"]
 categories = ["api-bindings", "asynchronous", "os"]
 repository = "https://github.com/robotty/simple-process-stats"
