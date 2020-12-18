@@ -4,15 +4,7 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    labels:
-      - "dependencies"
-      - "github-actions"
-      - "no changelog entry needed"
   - package-ecosystem: "cargo"
     directory: "/"
     schedule:
       interval: "daily"
-    labels:
-      - "dependencies"
-      - "rust"
-      - "no changelog entry needed"
