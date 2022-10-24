@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.0
+- Upgrade dependencies
+- Remove async api
+
 ## v1.0.0
 
 - Out of initial development stage. (https://semver.org/)
