@@ -4,13 +4,12 @@ use std::io::Cursor;
 use std::path::Path;
 use std::time::Duration;
 
-pub async fn get_info() -> Result<ProcessStats, Error> {
+pub fn get_info() -> Result<ProcessStats, Error> {
     let bytes_per_page = procfs::page_size().map_err(Error::SystemCall)?;
     let ticks_per_second = procfs::ticks_per_second().map_err(Error::SystemCall)?;
 
     let path = Path::new("/proc/self/stat");
-    let file_contents = tokio::fs::read(path)
-        .await
+    let file_contents = std::fs::read(path)
         .map_err(|e| Error::FileRead(path.to_path_buf(), e))?;
 
     let readable_string = Cursor::new(file_contents);
