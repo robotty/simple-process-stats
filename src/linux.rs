@@ -9,8 +9,7 @@ pub fn get_info() -> Result<ProcessStats, Error> {
     let ticks_per_second = procfs::ticks_per_second().map_err(Error::SystemCall)?;
 
     let path = Path::new("/proc/self/stat");
-    let file_contents = std::fs::read(path)
-        .map_err(|e| Error::FileRead(path.to_path_buf(), e))?;
+    let file_contents = std::fs::read(path).map_err(|e| Error::FileRead(path.to_path_buf(), e))?;
 
     let readable_string = Cursor::new(file_contents);
     let stat_file =
@@ -31,8 +30,8 @@ pub fn get_info() -> Result<ProcessStats, Error> {
 pub mod tests {
     use crate::linux;
 
-    #[tokio::test]
-    pub async fn test_no_error() {
+    #[test]
+    pub fn test_no_error() {
         #[no_mangle]
         fn spin_for_a_bit() {
             let mut _a = 0;
@@ -44,6 +43,6 @@ pub mod tests {
         // to get some nonzero number for cpu_time_user
         spin_for_a_bit();
 
-        dbg!(linux::get_info().await.unwrap());
+        dbg!(linux::get_info().unwrap());
     }
 }
