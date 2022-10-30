@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.1.0
+## v2.0.0
 - Upgrade dependencies
 - Remove async api
 
