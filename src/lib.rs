@@ -4,14 +4,12 @@
 //! A small library to get memory usage and elapsed CPU time.
 //!
 //! * Supports Windows, Linux and macOS.
-//! * Async interface, uses `tokio::fs` for file operations
 //!
 //! ```rust
 //! use simple_process_stats::ProcessStats;
 //!
-//! # #[tokio::main]
-//! # async fn main() {
-//! let process_stats = ProcessStats::get().await.expect("could not get stats for running process");
+//! # fn main() {
+//! let process_stats = ProcessStats::get().expect("could not get stats for running process");
 //! println!("{:?}", process_stats);
 //! // ProcessStats {
 //! //     cpu_time_user: 421.875ms,
@@ -52,19 +50,19 @@ pub struct ProcessStats {
 impl ProcessStats {
     /// Get the statistics using the OS-specific method.
     #[cfg(target_os = "windows")]
-    pub async fn get() -> Result<ProcessStats, Error> {
+    pub fn get() -> Result<ProcessStats, Error> {
         windows::get_info()
     }
 
     /// Get the statistics using the OS-specific method.
     #[cfg(target_os = "linux")]
-    pub async fn get() -> Result<ProcessStats, Error> {
-        linux::get_info().await
+    pub fn get() -> Result<ProcessStats, Error> {
+        linux::get_info()
     }
 
     /// Get the statistics using the OS-specific method.
     #[cfg(target_os = "macos")]
-    pub async fn get() -> Result<ProcessStats, Error> {
+    pub fn get() -> Result<ProcessStats, Error> {
         macos::get_info()
     }
 }
