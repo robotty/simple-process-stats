@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.0.0
+## Unversioned
 - Major: Replaced async api with synchronous API. (#20, #22)
 
 ## v1.0.0
