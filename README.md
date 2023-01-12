@@ -2,8 +2,7 @@
 
 A small library to get memory usage and elapsed CPU time.
 
-* Supports Windows, Linux and macOS.
-* Async interface, uses `tokio::fs` for file operations
+Supports Windows, Linux and macOS.
 
 ```rust
 use simple_process_stats::ProcessStats;
