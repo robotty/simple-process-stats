@@ -2,6 +2,7 @@
 
 ## Unversioned
 - Major: Replaced async api with synchronous API. (#20, #22)
+- macOS: apply timebase information to CPU times. (#21)
 
 ## v1.0.0
 
