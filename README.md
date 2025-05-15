@@ -18,6 +18,8 @@ println!("{:?}", process_stats);
 
 On Linux, this library reads `/proc/self/stat` and uses the `sysconf` libc function.
 
+On FreeBSD, this library uses getkerninfo().
+
 On Windows, the library uses `GetCurrentProcess` combined with `GetProcessTimes` and `K32GetProcessMemoryInfo`.
 
 On macOS, this library uses `proc_pidinfo` from `libproc` (and current process ID is determined via `libc`).

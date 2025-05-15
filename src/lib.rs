@@ -3,7 +3,7 @@
 
 //! A small library to get memory usage and elapsed CPU time.
 //!
-//! Supports Windows, Linux and macOS.
+//! Supports Windows, Linux, FreeBSD and macOS.
 //!
 //! ```rust
 //! use simple_process_stats::ProcessStats;
@@ -31,6 +31,8 @@ mod linux;
 mod macos;
 #[cfg(target_os = "windows")]
 mod windows;
+#[cfg(target_os = "freebsd")]
+mod freebsd;
 
 use std::path::PathBuf;
 use std::time::Duration;
@@ -64,6 +66,12 @@ impl ProcessStats {
     #[cfg(target_os = "macos")]
     pub fn get() -> Result<ProcessStats, Error> {
         macos::get_info()
+    }
+
+    /// Get the statistics using the OS-specific method.
+    #[cfg(target_os = "freebsd")]
+    pub fn get() -> Result<ProcessStats, Error> {
+        freebsd::get_info()
     }
 }
 
