@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## Unversioned
 
 - Major: Replaced async api with synchronous API. (#20, #22, #24)
 - Bugfix: macOS: apply timebase information to CPU times. (#21, #25)
