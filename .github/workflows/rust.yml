@@ -19,9 +19,7 @@ jobs:
     steps:
     - uses: actions/checkout@v7
     - uses: dtolnay/rust-toolchain@stable
-    - name: Run tests (only default features)
-      run: cargo test
-    - name: Run tests (all tests enabled)
+    - name: Run tests
       run: cargo test
   build:
     runs-on: ${{ matrix.os }}
