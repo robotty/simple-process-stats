@@ -1,5 +1,6 @@
 use crate::{Error, ProcessStats};
 use libproc::proc_pid::pidinfo;
+use libproc::task_info::TaskInfo;
 use std::time::Duration;
 
 pub fn get_info() -> Result<ProcessStats, Error> {
