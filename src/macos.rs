@@ -1,6 +1,6 @@
 use crate::{Error, ProcessStats};
-use std::time::Duration;
 use libproc::proc_pid::pidinfo;
+use std::time::Duration;
 
 pub fn get_info() -> Result<ProcessStats, Error> {
     let pid = std::process::id() as i32;
