@@ -5,7 +5,7 @@ use std::time::Duration;
 
 pub fn get_info() -> Result<ProcessStats, Error> {
     let pid = unsafe { libc::getpid() };
-    let proc_info = pidinfo::<TaskInfo>(pid as i32, 0).map_err(Error::SystemCall)?;
+    let proc_info = pidinfo::<TaskInfo>(pid as i32, 0).map_err(std::io::Error::other).map_err(Error::SystemCall)?;
     let timebase_info = mach_timebase_info::get();
 
     Ok(ProcessStats {
