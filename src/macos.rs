@@ -22,7 +22,7 @@ struct mach_timebase_info {
 
 impl mach_timebase_info {
     pub fn get() -> Self {
-        extern "C" {
+        unsafe extern "C" {
             fn mach_timebase_info(info: *mut mach_timebase_info) -> libc::c_int;
         }
         let mut info = mach_timebase_info { numer: 0, denom: 0 };
