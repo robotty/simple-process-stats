@@ -79,6 +79,6 @@ pub enum Error {
     FileContentsMalformed,
 
     /// A system-native function returned an error code.
-    #[error("Call to system-native API errored: {0}")]
+    #[error("Call to system-native API failed: {0}")]
     SystemCall(std::io::Error),
 }
