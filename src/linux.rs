@@ -1,19 +1,19 @@
 use crate::{Error, ProcessStats};
+use procfs::FromRead;
 use procfs::process::Stat;
 use std::io::Cursor;
 use std::path::Path;
 use std::time::Duration;
 
 pub fn get_info() -> Result<ProcessStats, Error> {
-    let bytes_per_page = procfs::page_size().map_err(Error::SystemCall)?;
-    let ticks_per_second = procfs::ticks_per_second().map_err(Error::SystemCall)?;
+    let bytes_per_page = procfs::page_size();
+    let ticks_per_second = procfs::ticks_per_second();
 
     let path = Path::new("/proc/self/stat");
     let file_contents = std::fs::read(path).map_err(|e| Error::FileRead(path.to_path_buf(), e))?;
 
     let readable_string = Cursor::new(file_contents);
-    let stat_file =
-        Stat::from_reader(readable_string).map_err(|_e| Error::FileContentsMalformed)?;
+    let stat_file = Stat::from_read(readable_string).map_err(|_e| Error::FileContentsMalformed)?;
 
     let memory_usage_bytes = (stat_file.rss as u64) * (bytes_per_page as u64);
     let user_mode_seconds = (stat_file.utime as f64) / (ticks_per_second as f64);
@@ -32,7 +32,7 @@ pub mod tests {
 
     #[test]
     pub fn test_no_error() {
-        #[no_mangle]
+        #[unsafe(no_mangle)]
         fn spin_for_a_bit() {
             let mut _a = 0;
             for _i in 0..9999999 {
