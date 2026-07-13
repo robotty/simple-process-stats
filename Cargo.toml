@@ -24,3 +24,4 @@ libc = "0.2"
 
 [target.'cfg(target_os = "macos")'.dependencies]
 libproc = "0.14"
+libc = "0.2"
