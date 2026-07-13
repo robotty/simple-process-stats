@@ -1,4 +1,5 @@
 use crate::{Error, ProcessStats};
+use procfs::FromRead;
 use procfs::process::Stat;
 use std::io::Cursor;
 use std::path::Path;
