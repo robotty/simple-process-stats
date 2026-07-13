@@ -1,9 +1,10 @@
 use crate::{Error, ProcessStats};
 use std::time::Duration;
+use libproc::proc_pid::pidinfo;
 
 pub fn get_info() -> Result<ProcessStats, Error> {
-    let pid = unsafe { libc::getpid() };
-    let proc_info = darwin_libproc::task_info(pid).map_err(Error::SystemCall)?;
+    let pid = std::process::id() as i32;
+    let proc_info = pidinfo::<TaskInfo>(pid, 0).map_err(Error::SystemCall)?;
     let timebase_info = mach_timebase_info::get();
 
     Ok(ProcessStats {
