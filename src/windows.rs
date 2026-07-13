@@ -94,9 +94,10 @@ mod tests {
 
     #[test]
     fn test_no_error() {
-        #[no_mangle]
+        #[unsafe(no_mangle)]
         fn spin_for_a_bit() {
             let mut _a = 0;
+            #[allow(clippy::explicit_counter_loop)]
             for _i in 0..9999999 {
                 _a += 1;
             }
